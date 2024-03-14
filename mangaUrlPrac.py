@@ -14,18 +14,12 @@ import undetected_chromedriver as uc
 
 url = "https://mangaplus.shueisha.co.jp/updates"
 
-# driver = webdriver.Chrome(executable_path=r"/Users/brothersontech/Desktop/Programming/Portfolio/mangaDisplayProject/chromedriver")
-
-#options = webdriver.ChromeOptions() 
-#options.headless = True
-#options.add_argument("start-maximized")
-#options.add_experimental_option("excludeSwitches", ["enable-automation"])
-#options.add_experimental_option('useAutomationExtension', False)
+#
 driver = uc.Chrome()
 
-# driver = webdriver.Chrome()
+
 driver.get(url)
-# r = requests.get(url)
+
 
 action = ActionBuilder(driver)
 action.pointer_action.move_to_location(0, 50)
@@ -67,8 +61,7 @@ for i in range(0, len(newMangas)):
 
 	#Get Links:
 	mangaLinkPrefix = "https://mangaplus.shueisha.co.jp"
-	#mangaLinkElement = newMangas[i].find_element(By.CLASS_NAME, "UpdatedTitle-module_titleName_1QO_s")
-	#mangaLink = newMangas[i].find_element(By.XPATH, "//*[@id='app']/div[2]/div/div[2]/div/div[4]/main/div[1]/div[1]/div/div[1]/a").get_attribute('href')
+
 	mangaLink = newMangas[i].find_element(By.TAG_NAME, 'a').get_attribute('href')
 	print(mangaLink)
 	# print(newMangas[i].find_element(By.CSS_SELECTOR, "div.UpdatedTitle-module_titleWrapper_2EQIT:nth-child(" + str(i+1) + ") > a:nth-child(1)").get_attribute('href'))
@@ -87,12 +80,7 @@ for i in range(0, len(newMangas)):
 	listOfMangaDescUrls.append(mangaDescUrl)
 	
 
-# for i in range(len(listOfNewTitles)):
-# 	print(listOfNewTitles[i])
-# 	print(listOfMangaAuthors[i])
-# 	print("Link: " +  str(listOfMangaLinks[i]))
-# 	print("IMG Link: " + str(listOfMangaImageURLs[i]))
-# 	print("--------------")
+
 
 #driver.close()
 listOfMangaDesc = []
